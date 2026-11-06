@@ -33,6 +33,7 @@ is_active_member = st.selectbox("Is Active Member?", [0, 1])
 
 #prepoare the input data
 input_data = pd.DataFrame({
+    'Geography': [geography],
     'Gender': [le.transform([gender])[0]],
     'Age': [age],
     'Balance': [balance],
