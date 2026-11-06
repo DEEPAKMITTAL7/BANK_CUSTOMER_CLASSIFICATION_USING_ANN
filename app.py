@@ -9,10 +9,10 @@ from sklearn.preprocessing import LabelEncoder, OneHotEncoder, StandardScaler
 model = tf.keras.models.load_model('bank_customer_churn_model.h5')
 
 # load the label encoder, one hot encoder and scaler
-with open('label_encoder.pkl', 'rb') as f:
+with open('encoder.pkl', 'rb') as f:
     le = pickle.load(f)
 
-with open('onehot_encoder.pkl', 'rb') as f:
+with open('geo_encoder.pkl', 'rb') as f:
     onehot_encoder = pickle.load(f)
 
 with open('scaler.pkl', 'rb') as f:
