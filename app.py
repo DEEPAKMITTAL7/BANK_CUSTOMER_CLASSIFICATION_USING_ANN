@@ -33,22 +33,21 @@ is_active_member = st.selectbox("Is Active Member?", [0, 1])
 
 #prepoare the input data
 input_data = pd.DataFrame({
-    'Geography': [geography],
+    'CreditScore': [credit_score],
     'Gender': [le.transform([gender])[0]],
     'Age': [age],
-    'Balance': [balance],
-    'CreditScore': [credit_score],
-    'EstimatedSalary': [estimated_salary],
     'Tenure': [tenure],
+    'Balance': [balance],
     'NumOfProducts': [num_of_products],
     'HasCrCard': [has_credit_card],
-    'IsActiveMember': [is_active_member]
+    'IsActiveMember': [is_active_member],
+    'EstimatedSalary': [estimated_salary]
 })  
 
-geo_data = onehot_encoder.transform(input_data[['Geography']]).toarray()
+geo_data = onehot_encoder.transform([[geography]]).toarray()
 geo_df = pd.DataFrame(geo_data, columns=onehot_encoder.get_feature_names_out(['Geography']))
 
-input_data = pd.concat([input_data.drop('Geography', axis=1), geo_df], axis=1)
+input_data = pd.concat([input_data.reset_index(drop=True), geo_df], axis=1)
 
 #scale the input data
 input_data_scaled = scaler.transform(input_data)
